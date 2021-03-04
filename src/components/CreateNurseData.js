@@ -11,13 +11,13 @@ export class CreateNurseData extends Component {
             morning:'',
             evening:'',
             night:'',
-            off:''       
+           // off:''       
         }
         this.changeTotalNurseHandler=this.changeTotalNurseHandler.bind(this);
         this.changeMorningHandler=this.changeMorningHandler.bind(this);
         this.changeEveningHandler=this.changeEveningHandler.bind(this);
         this.changeNightHandler=this.changeNightHandler.bind(this);
-        this.changeOffHandler=this.changeOffHandler.bind(this);
+        //this.changeOffHandler=this.changeOffHandler.bind(this);
         this.saveNurses=this.saveNurses.bind(this);
         this.cancel=this.cancel.bind(this);
 
@@ -38,13 +38,15 @@ export class CreateNurseData extends Component {
         this.setState({night:event.target.value});
     }
 
-    changeOffHandler=(event)=>{
-        this.setState({off:event.target.value});
-    }
-
+    // changeOffHandler=(event)=>{
+    //     this.setState({off:event.target.value});
+    // }
     saveNurses=(e)=>{
+        
         e.preventDefault();
-        let nurse={totalNurse:this.state.totalNurse, morning:this.state.morning, evening:this.state.evening, night:this.state.night, off:this.state.off};
+        const value=(parseInt(this.state.totalNurse)-(parseInt(this.state.morning) + parseInt(this.state.night) + parseInt(this.state.evening))).toString();
+        //let nurse={totalNurse:this.state.totalNurse, morning:this.state.morning, evening:this.state.evening, night:this.state.night, off:this.state.off};
+        let nurse={totalNurse:this.state.totalNurse, morning:this.state.morning, evening:this.state.evening, night:this.state.night, off:value};
         console.log('nurse => '+JSON.stringify(nurse));
 
         
@@ -64,34 +66,34 @@ export class CreateNurseData extends Component {
             <div className="container">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3">
-                    <h3 className="text-center">Nurse Details</h3>
+                    <h3 className="text-center">Scheduling Details</h3>
                         <div className="card-bpdy">
                             <form>
                                 <div className="form-group">
-                                    <label>Total Nurse: </label>
+                                    <label>Total: </label>
                                     <input placeholder="Total Nurse" name="totalNurse" className="form-control"
                                         value={this.state.totalNurse} onChange={this.changeTotalNurseHandler} />
                                 </div>
                                 <div className="form-group">
-                                    <label>Morning Nurses: </label>
+                                    <label>Morning: </label>
                                     <input placeholder="Total Morning Nurse" name="morning" className="form-control"
                                         value={this.state.morning} onChange={this.changeMorningHandler} />
                                 </div>
                                 <div className="form-group">
-                                    <label>Evening Nurses: </label>
+                                    <label>Evening: </label>
                                     <input placeholder="Total Evening Nurse" name="evening" className="form-control"
                                         value={this.state.evening} onChange={this.changeEveningHandler} />
                                 </div>
                                 <div className="form-group">
-                                    <label>Night Nurses: </label>
+                                    <label>Night: </label>
                                     <input placeholder="Total Night Nurse" name="night" className="form-control"
                                         value={this.state.night} onChange={this.changeNightHandler} />
                                 </div>
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label>Holiday Nurses: </label>
                                     <input placeholder="Total holiday Nurse" name="off" className="form-control"
                                         value={this.state.off} onChange={this.changeOffHandler} />
-                                </div>
+                                </div> */}
                                 <button className="btn btn-success" onClick={this.saveNurses}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft:"10px"}}>Cancel</button>
                             </form>
