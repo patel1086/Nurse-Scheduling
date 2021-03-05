@@ -3,7 +3,7 @@ import axios from 'axios';
 const NURSE_API_BASE_URL="http://localhost:8080/api/v1/nurses";
 
 class NurseService {
-    getNurse(){
+     getNurse(){
         return axios.get(NURSE_API_BASE_URL);
     }
 
@@ -11,10 +11,9 @@ class NurseService {
         return axios.post(NURSE_API_BASE_URL,nurse);
     }
 
-    getNurseById(nurseId){
+     getNurseById(nurseId){
         return axios.get(NURSE_API_BASE_URL + '/' + nurseId);
-    }
-    
+    }  
 }
 
 export default new NurseService()

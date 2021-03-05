@@ -38,9 +38,6 @@ export class CreateNurseData extends Component {
         this.setState({night:event.target.value});
     }
 
-    // changeOffHandler=(event)=>{
-    //     this.setState({off:event.target.value});
-    // }
     saveNurses=(e)=>{
         
         e.preventDefault();
@@ -89,11 +86,6 @@ export class CreateNurseData extends Component {
                                     <input placeholder="Total Night Nurse" name="night" className="form-control"
                                         value={this.state.night} onChange={this.changeNightHandler} />
                                 </div>
-                                {/* <div className="form-group">
-                                    <label>Holiday Nurses: </label>
-                                    <input placeholder="Total holiday Nurse" name="off" className="form-control"
-                                        value={this.state.off} onChange={this.changeOffHandler} />
-                                </div> */}
                                 <button className="btn btn-success" onClick={this.saveNurses}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft:"10px"}}>Cancel</button>
                             </form>

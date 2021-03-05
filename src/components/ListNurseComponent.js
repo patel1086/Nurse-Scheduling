@@ -20,7 +20,7 @@ export class ListNurseComponent extends Component {
         });
     }
     viewNurse(id){
-        this.props.history.push(`/view-nurse/${id}/${this.state.nurses.map((nurse)=> nurse.totalNurse)}`);
+        this.props.history.push(`/view-nurse/${id}`);
     }
 
     render() {
@@ -54,9 +54,6 @@ export class ListNurseComponent extends Component {
                                        <td>{nurse.off}</td>
                                        <td>
                                        <button onClick={()=>this.viewNurse(nurse.id)} className="btn btn-info" >Plan</button>
-                                           {/* <button onClick={()=>this.editEmployee(nurse.id)} className="btn btn-info" >Update</button>
-                                           <button onClick={()=>this.deleteEmployee(nurse.id)} className="btn btn-danger" style={{marginLeft:"10px"}}>Delete</button>
-                                           <button onClick={()=>this.viewEmployee(nurse.id)} className="btn btn-info" style={{marginLeft:"10px"}}>View</button> */}
                                        </td>
                                    </tr>
                                )
